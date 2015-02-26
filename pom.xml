@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>backbone-babysitter</artifactId>
-    <version>0.1.6</version>
+    <version>0.1.7-SNAPSHOT</version>
     <name>Backbone.BabySitter</name>
     <description>WebJar for Backbone.BabySitter</description>
     <url>http://webjars.org</url>
@@ -28,7 +28,7 @@
         <url>http://github.com/webjars/backbone-babysitter</url>
         <connection>scm:git:https://github.com/webjars/backbone-babysitter.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/backbone-babysitter.git</developerConnection>
-        <tag>backbone-babysitter-0.1.6</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
