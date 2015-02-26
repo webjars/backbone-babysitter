@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>backbone-babysitter</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.1.6</version>
     <name>Backbone.BabySitter</name>
     <description>WebJar for Backbone.BabySitter</description>
     <url>http://webjars.org</url>
@@ -41,10 +41,36 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstreamVersion>0.0.3</upstreamVersion>
+        <upstreamVersion>0.1.6</upstreamVersion>
         <downloadUrl>https://raw.github.com/marionettejs/backbone.babysitter/v${upstreamVersion}/lib</downloadUrl>
         <destinationDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstreamVersion}</destinationDir>
-    </properties>
+        <requirejs>
+            {
+                "paths": {
+                    "backbone-babysitter": "backbone.babysitter"
+                },
+                "shim": {
+                    "backbone-babysitter": [
+                        "underscore",
+                        "backbone"
+                    ]
+                }
+            }
+        </requirejs>
+     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>backbonejs</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>underscorejs</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -73,6 +99,16 @@
                             <toDir>${destinationDir}</toDir>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>download-map-js</id>
+                        <phase>process-resources</phase>
+                        <goals><goal>download-single</goal></goals>
+                        <configuration>
+                            <url>${downloadUrl}</url>
+                            <fromFile>backbone.babysitter.map</fromFile>
+                            <toDir>${destinationDir}</toDir>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -81,6 +117,12 @@
                 <version>2.3.2</version>
             </plugin>
         </plugins>
-    </build>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <targetPath>${destinationDir}</targetPath>
+            </resource>
+        </resources>
+     </build>
 
 </project>
